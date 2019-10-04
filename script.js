@@ -12,8 +12,25 @@ request.onload = function() {
 
 	if (request.status >= 200 && request.status < 400) {
 		data.forEach(movie => {
-			// log each movie title
-			console.log(movie.title)
+			// create a div with a card class
+			const card = document.createElement('div')
+			card.setAttribute('class', 'card')
+
+			// Create an h1 and set the text content to the film's title
+			const h1 = document.createElement('h1')
+			h1.textContent = movie.title 
+
+			// create a p and set the text content to the films description 
+			const p = document.createElement('p')
+			movie.description = movie.description.substring(0, 300)
+			p.textContent = `${movie.description}...`
+
+			// append the card to the container element 
+			container.appendChild(card)
+
+			card.appendChild(h1)
+			card.appendChild(p)
+
 		}) 
 	} else {
 		console.log('error')
